@@ -1,6 +1,9 @@
+%% Cas où Ns = 2 < Nc = 5
+
 clc
 clear
 close all
+
 
 % Initialisation ----------------------------------------------------------
 
@@ -32,7 +35,7 @@ end
 
 % Definition de Y ---------------------------------------------------------
 
-M =  [1 1 ; 1.1 1.3];
+M =  [1 1 ; 1.8 1.3 ; 0.55 1.8 ; 1.2 0.8 ; 1 1.25];
 Y = M*X;
 
 menu_music = menu('Ecoute des observations','Y(1)','Y(2)', 'Aucune');
@@ -56,6 +59,7 @@ for i=1:Ns
 end
 
 % Intercorrélation --------------------------------------------------------
+
 k=1;
 for i=1:Nc
     for j=1:Ns
@@ -65,7 +69,6 @@ for i=1:Nc
 end
 
 % Subplot -----------------------------------------------------------------
-
 
 figure(1)
 nb_col_subplot = 3;
@@ -80,7 +83,7 @@ end
 for i=1:Nc
     subplot(nb_lig_subplot, nb_col_subplot,3*i-1)
     plot(Y(i,:))
-    title('PhiXY');
+    title('Y');
 end
 
 for i=1:Ns

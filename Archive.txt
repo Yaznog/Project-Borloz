@@ -1,0 +1,39 @@
+% Création de GammaX ------------------------------------------------------
+
+% GammaX = zeros(Ns,Ns,Nb);
+
+% for i=1:Nb
+%     for j=1:Ns
+%         GammaX(j,j,i) = PhiXX(j,i);
+%     end
+% end
+
+% for i=1:Nb
+%     for j=1:Ns
+%         for k=1:Ns
+%             GammaX(j,k,i) = Intercorrelation(X(j,:),X(k,:),N,i);
+%         end
+%     end
+% end
+
+% Création de GammaY ------------------------------------------------------
+
+% GammaY = zeros(Nc,Nc,Nb);
+
+% for i=1:Nb
+%     for j=1:Nc
+%         GammaY(j,j,i) = PhiYY(j,i);
+%     end
+% end
+
+% Intercorrélation --------------------------------------------------------
+
+% k=1;
+% for i=1:Nc
+%     for j=1:Nc
+%         for l=1:Nb
+%             PhiYY(k,l) = Intercorrelation(Y(j,:),Y(i,:),N,l);
+%         end
+%         k = k+1;
+%     end
+% end
