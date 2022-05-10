@@ -13,15 +13,15 @@ Nc = length(M(:,1));
 i0 = 2;
 Nb = 400;
 
-% dataH = load('handel.mat');
-% dataL = load('laughter.mat');
+dataH = load('handel.mat');
+dataL = load('laughter.mat');
 
-[Handel,fe] = audioread('ode-a-la-joie-48k.wav');
-[Laughter,fe] = audioread('moonlight-48k.wav');
+% [Handel,fe] = audioread('ode-a-la-joie-48k.wav');
+% [Laughter,fe] = audioread('moonlight-48k.wav');
 
-% Handel = dataH.y;
-% Laughter = dataL.y;
-% fe = dataH.Fs;
+Handel = dataH.y;
+Laughter = dataL.y;
+fe = dataH.Fs;
 
 clear dataH dataL;
 
@@ -93,17 +93,22 @@ end
 
 % Création de DeltaY ------------------------------------------------------
 
-DeltaY_i0 = inv(GammaY(:,:,1))*GammaY(:,:,i0+1);
+LambdaY_i0 = inv(GammaY(:,:,1))*GammaY(:,:,i0+1);
 
 % Création de U -----------------------------------------------------------
 
-[Delta,ValP] = eig(DeltaY_i0);
-for i=1:length(Delta(1,:))
-    U(:,i) = Delta(:,i)./norm(Delta(:,i));
+[Mpropre,Delta] = eig(LambdaY_i0);
+for i=1:length(Mpropre(1,:))
+    U(:,i) = Mpropre(:,i)./norm(Mpropre(:,i));
 end
 
 % Definition de Z ---------------------------------------------------------
 
+% D = [1 0 ; 0 1];
+% P = [1 0 ; 0 1];
+% 
+% U = U*D;
+% U = U*P;
 S = U.';
 Z = S*Y;
 

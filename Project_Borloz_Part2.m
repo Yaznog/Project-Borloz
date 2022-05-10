@@ -94,10 +94,17 @@ DeltaY_i0 = inv(GammaY(:,:,1))*GammaY(:,:,i0+1);
 
 % Création de U -----------------------------------------------------------
 
-[Delta,ValP] = eig(DeltaY_i0);
-for i=1:length(Delta(1,:))
-    U(:,i) = Delta(:,i)./norm(Delta(:,i));
-end
+% [Delta,ValP] = eig(DeltaY_i0);
+
+Mat = eigtrivpd(DeltaY_i0);
+U = Mat(1:Ns,1:Ns)
+% for i=1:Ns
+%     
+% end
+% 
+% for i=1:length(Delta(1,:))
+%     U(:,i) = Delta(:,i)./norm(Delta(:,i));
+% end
 
 % Definition de Z ---------------------------------------------------------
 
