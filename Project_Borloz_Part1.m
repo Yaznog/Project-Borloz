@@ -6,17 +6,22 @@ close all
 
 % Initialisation ----------------------------------------------------------
 
-Ns = 2;
-Nc = Ns;
+M =  [1 1 ; 1.1 1.3];
+
+Ns = length(M(1,:));
+Nc = length(M(:,1));
 i0 = 2;
 Nb = 400;
 
-dataH = load('handel.mat');
-dataL = load('laughter.mat');
+% dataH = load('handel.mat');
+% dataL = load('laughter.mat');
 
-Handel = dataH.y;
-Laughter = dataL.y;
-fe = dataH.Fs;
+[Handel,fe] = audioread('ode-a-la-joie-48k.wav');
+[Laughter,fe] = audioread('moonlight-48k.wav');
+
+% Handel = dataH.y;
+% Laughter = dataL.y;
+% fe = dataH.Fs;
 
 clear dataH dataL;
 
@@ -36,7 +41,6 @@ clear menu_music;
 
 % Definition de Y ---------------------------------------------------------
 
-M =  [1 1 ; 1.1 1.3];
 Y = M*X;
 
 menu_music = menu('Ecoute des observations','Y(1)','Y(2)', 'Aucune');

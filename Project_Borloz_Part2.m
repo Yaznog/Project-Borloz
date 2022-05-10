@@ -6,8 +6,10 @@ close all
 
 % Initialisation ----------------------------------------------------------
 
-Ns = 2;
-Nc = 3;
+M =  [1 1 ; 1.8 1.3 ; 0.55 1.8];
+
+Ns = length(M(1,:));
+Nc = length(M(:,1));
 i0 = 2;
 Nb = 400;
 
@@ -36,7 +38,6 @@ clear menu_music;
 
 % Definition de Y ---------------------------------------------------------
 
-M =  [1 1 ; 1.8 1.3 ; 0.55 1.8];
 Y = M*X;
 
 menu_music = menu('Ecoute des observations','Y(1)','Y(2)', 'Aucune');
@@ -80,8 +81,8 @@ end
 % Création de GammaY -------------------------------------------------------
 
 for i=1:Nb
-    for j=1:Ns
-        for k=1:Ns
+    for j=1:Nc
+        for k=1:Nc
             GammaY(j,k,i) = Intercorrelation(Y(j,:),Y(k,:),N,i);
         end
     end
@@ -104,7 +105,7 @@ W = U.';
 % S = U.';
 Z = W*Y;
 
-Amplification = 8;
+Amplification = 1;
 
 Z = Amplification.*Z;
 
